@@ -9,7 +9,7 @@ function signUp(req, res)
     const user = new User({
         name: body.name,
         lastname: body.lastname,
-        email: body.email,
+        control: body.control,
         phone: body.phone
     })
 
@@ -24,7 +24,7 @@ function signUp(req, res)
 function signIn(req, res)
 {
     const body = req.body
-    User.findOne({ email: body.email }, (err, user) => {
+    User.findOne({ control: body.control }, (err, user) => {
         if(err) return res.status(500).send({message: err})
         if(!user) return res.status(404).send({message: 'No se encontró un usuario asociado a ese email'})
 
