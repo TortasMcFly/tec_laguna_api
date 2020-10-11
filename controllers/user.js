@@ -48,8 +48,13 @@ function getUserInfo(req, res)
 
         if(err) return res.status(500).send({message: err})
         if(!user) return res.status(404).send({message: 'No se encontró al usuario'})
-
-        res.status(200).send(user)
+        res.status(200).send({
+            "info": user,
+            "carrera": {
+                "espcialidad": "Sistemas Computacionales",
+                "semestre": 9
+            }
+        })
 
     })
 }
