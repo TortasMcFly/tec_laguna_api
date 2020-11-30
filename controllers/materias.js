@@ -558,7 +558,29 @@ function getCargaAcademica(req, res)
     })
 }
 
+function bajaMateria(req, res) {
+    let user_id = req.user
+    User.findById(user_id, (err, user) => {
+        if(err) return res.status(500).send({message: err})
+        if(!user) return res.status(404).send({message: 'No existe el usuario'})
+
+        res.status(200).send({"respuesta": "Materia en proceso para ser dada de baja."})
+    })
+}
+
+function cargarMaterias(req, res) {
+    let user_id = req.user
+    User.findById(user_id, (err, user) => {
+        if(err) return res.status(500).send({message: err})
+        if(!user) return res.status(404).send({message: 'No existe el usuario'})
+
+        res.status(200).send({"respuesta": "Horario generado exitosamente."})
+    })
+}
+
 module.exports = {
     getKardex,
-    getCargaAcademica
+    getCargaAcademica,
+    bajaMateria,
+    cargarMaterias
 }
